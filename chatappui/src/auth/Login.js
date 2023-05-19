@@ -6,10 +6,11 @@ import { VStack } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 
 export default function Login() {
+  const [show, setShow] = useState(false);
   const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [showPassword, setShowPassword] = useState(false);
-  const handleShowPassword = () => setShowPassword(!showPassword);
+  const [showPassword, setShowPassword] = useState();
+
+  const handleShowPassword = () => setShow(!show);
 
   const toast = useToast();
 
@@ -22,19 +23,21 @@ export default function Login() {
             type="email"
             placeholder="Enter Your Email Address"
             value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </FormControl>
         <FormControl id="password" isRequired>
           <FormLabel>Password</FormLabel>
           <InputGroup size="md">
             <Input
-              value={password}
-              type={showPassword ? "text" : "password"}
+              value={showPassword}
+              type={show ? "text" : "password"}
               placeholder="Enter Password"
+              onChange={(e) => setShowPassword(e.target.value)}
             />
             <InputRightElement width="4.5rem">
               <Button h="1.75rem" size="sm" onClick={handleShowPassword}>
-                {showPassword ? "Hide" : "Show"}
+                {show ? "Hide" : "Show"}
               </Button>
             </InputRightElement>
           </InputGroup>
@@ -49,7 +52,7 @@ export default function Login() {
           width="100%"
           onClick={() => {
             setEmail("guest.user@example.com");
-            setPassword("guestuser@2023");
+            setShowPassword("guestuser@2023");
           }}
         >
           Get Guest User Credentials

@@ -27,7 +27,7 @@ function Homepage() {
       >
         <Center bg="white" h="100px" color="black">
           <Text fontSize="4xl" fontFamily="Work sans">
-            Talk-A-Tive
+            CHAT-APP
           </Text>
         </Center>
       </Box>
